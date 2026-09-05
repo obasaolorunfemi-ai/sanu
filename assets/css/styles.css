@@ -360,6 +360,22 @@ ul.ranked{margin:0;padding:0;display:flex;flex-direction:column}
 .medallion .cap{font-family:Cabin;font-weight:600;font-size:12px;color:var(--ink-2);text-align:center;line-height:1.35}
 .medallion .cap b{color:var(--ink);display:block;font-size:12.5px}
 
+/* the SANU app showcase */
+.app-card{overflow:hidden}
+.app-card-grid{display:grid;grid-template-columns:1fr minmax(260px,42%);gap:24px;align-items:end}
+.app-card-grid h3{font-size:1.15rem}
+.app-phones-wrap{position:relative;align-self:end;margin-bottom:-22px}
+.app-phones{
+  width:100%;height:auto;display:block;
+  filter:drop-shadow(0 26px 50px rgba(85,34,45,.32));
+  -webkit-mask-image:linear-gradient(180deg,#000 78%,transparent);
+          mask-image:linear-gradient(180deg,#000 78%,transparent);
+}
+@media (max-width:720px){
+  .app-card-grid{grid-template-columns:1fr;gap:8px}
+  .app-phones-wrap{max-width:340px;margin:4px auto -22px}
+}
+
 details.data{margin-top:16px;font-size:12.5px}
 details.data summary{cursor:pointer;font-family:Cabin;font-weight:600;color:var(--ink-2);font-size:12px;letter-spacing:.03em}
 details.data table{width:100%;border-collapse:collapse;margin-top:10px}
