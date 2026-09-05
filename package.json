@@ -1,0 +1,17 @@
+{
+  "name": "sanu-report",
+  "version": "1.0.0",
+  "private": true,
+  "description": "The SANU Report — interactive dashboard (Kian Smith / SANU)",
+  "type": "module",
+  "scripts": {
+    "dev": "netlify dev",
+    "start": "netlify dev"
+  },
+  "dependencies": {
+    "@netlify/blobs": "^8.1.0"
+  },
+  "devDependencies": {
+    "netlify-cli": "^17.0.0"
+  }
+}

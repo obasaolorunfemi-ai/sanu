@@ -1,0 +1,15 @@
+# Netlify configuration — static site + one function for the editable data store.
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+
+# The /api/data route is declared by the function itself (config.path in
+# netlify/functions/data.mjs). No redirect needed.
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
