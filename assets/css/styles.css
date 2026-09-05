@@ -181,11 +181,14 @@ section{padding-top:74px;scroll-margin-top:110px}
 body[data-mode="projected"] .hero .disclaim{display:block}
 body[data-mode="projected"] .hero .period .dot{background:var(--gold)}
 .hero-coin{
-  position:absolute;right:8px;top:44px;width:min(30vw,290px);aspect-ratio:1;border-radius:50%;
-  pointer-events:none;opacity:.92;z-index:0;
-  filter:drop-shadow(0 24px 50px rgba(85,34,45,.28));
+  position:absolute;right:0;top:16px;width:min(24vw,230px);aspect-ratio:1;border-radius:50%;
+  pointer-events:none;opacity:.85;z-index:0;
+  filter:drop-shadow(0 24px 50px rgba(85,34,45,.25));
+  animation:coinIn 1s cubic-bezier(.22,1,.36,1) both .1s;
 }
+@keyframes coinIn{from{opacity:0;transform:scale(.7) rotate(-20deg)}to{opacity:.85;transform:none}}
 @media (max-width:1120px){.hero-coin{display:none}}
+@media (prefers-reduced-motion:reduce){.hero-coin{animation:none}}
 .hero>.reveal,.hero>.kpis{position:relative;z-index:1}
 
 /* ---------- KPI strip ---------- */

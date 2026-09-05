@@ -6,8 +6,12 @@
 [functions]
   node_bundler = "esbuild"
 
-# The /api/data route is declared by the function itself (config.path in
-# netlify/functions/data.mjs). No redirect needed.
+# The function declares config.path = "/api/data"; this rewrite is a belt-and-
+# braces fallback so the endpoint resolves on every Netlify runtime version.
+[[redirects]]
+  from = "/api/data"
+  to = "/.netlify/functions/data"
+  status = 200
 
 [[headers]]
   for = "/assets/*"
