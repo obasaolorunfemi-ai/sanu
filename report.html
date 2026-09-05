@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en" data-skin="classic">
+<head>
+<meta charset="utf-8">
+<title>The SANU Report</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="SANU (Kian Smith) annual report — verified users, gold & silver traded, operations and product, July 2022–2025 with modelled 2026 projections.">
+<meta name="theme-color" content="#55222D">
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32">
+<link rel="icon" href="assets/img/favicon-512.png" sizes="512x512">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<script>try{var s=localStorage.getItem('sanu-skin');if(s)document.documentElement.dataset.skin=s;var t=localStorage.getItem('sanu-theme');if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,600;0,700&family=Manrope:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/editorial.css">
+</head>
+<body data-mode="actual">
+
+<header>
+  <div class="bar">
+    <a class="brand" href="index.html" aria-label="SANU — Kian Smith — cover">
+      <img class="logo logo-d" src="assets/img/logo-dark.png" alt="Kian Smith SANU" width="150">
+      <img class="logo logo-l" src="assets/img/logo-light.png" alt="Kian Smith SANU" width="150">
+    </a>
+
+    <nav class="secs" aria-label="Report sections">
+      <a href="#overview">Overview</a>
+      <a href="#people">People</a>
+      <a href="#trading">Trading</a>
+      <a href="#operations">Operations</a>
+      <a href="#product">Product</a>
+      <a href="#growth">Growth</a>
+    </nav>
+
+    <div class="ctrls">
+      <div class="seg" role="group" aria-label="Reporting figures">
+        <button id="mActual" aria-pressed="true">Actual</button>
+        <button id="mProj" aria-pressed="false">Projected&nbsp;’26</button>
+      </div>
+      <button class="skin-btn" id="skin" aria-label="Switch design style" title="Switch design style">
+        <span class="s-classic">Classic</span><span class="s-editorial">Editorial</span>
+      </button>
+      <button class="icon-btn" id="theme" aria-label="Toggle light or dark theme">
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5 5 3.5 3.5M20.5 20.5 19 19M19 5l1.5-1.5M3.5 20.5 5 19"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="currentColor"><path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z"/></svg>
+      </button>
+      <button class="icon-btn hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="drawer-back" id="drawerBack"></div>
+<aside class="drawer" id="drawer" aria-label="Menu">
+  <button class="icon-btn close" id="drawerClose" aria-label="Close menu">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+  </button>
+  <a href="#overview">Overview</a>
+  <a href="#people">People</a>
+  <a href="#trading">Trading</a>
+  <a href="#operations">Operations</a>
+  <a href="#product">Product</a>
+  <a href="#growth">Growth</a>
+  <div class="dv"></div>
+  <a href="#" id="drawerSkin">Switch design style</a>
+  <a href="admin.html">Edit the data →</a>
+</aside>
+
+<main id="top">
+
+  <!-- ============ OVERVIEW ============ -->
+  <section class="hero" id="overview">
+    <img class="hero-coin float" src="assets/img/coin-gold-britannia.webp" alt="" aria-hidden="true">
+    <div class="reveal"><div class="kicker">Gold to the People</div></div>
+    <div class="reveal" data-d="1"><h1>The SANU <em>Report</em></h1></div>
+    <div class="reveal" data-d="2">
+      <div class="period"><span class="dot"></span><span id="periodLabel">July 2022 – July 2025</span></div>
+      <p class="disclaim">You’re viewing <b>projected</b> July 2026 figures — modelled from the 2022–2025 trend, not reported results. Edit them any time from the <a href="admin.html">data form</a>.</p>
+    </div>
+
+    <div class="grid kpis" id="kpiBand"></div>
+  </section>
+
+  <!-- ============ PEOPLE ============ -->
+  <section id="people">
+    <div class="sec-head reveal">
+      <div><span class="eyebrow">01 — People</span><h2>Who is buying <em>gold</em> on SANU</h2></div>
+      <p class="lead">A verified base concentrated in Lagos, Kano and Abuja, with a long tail across Nigeria and a growing diaspora footprint on four continents.</p>
+    </div>
+
+    <div class="grid two">
+      <div class="card statcard reveal">
+        <div class="k-label">Verified users <span class="tag-proj">Projected</span></div>
+        <div class="bigstat"><span data-metric="users">6,400</span></div>
+        <p class="cap">Fully KYC-verified — national (NIN) and international document checks, completed in-app via “swap”.</p>
+        <div class="legend"><span><span class="sw"></span><span data-metric="usersNg">5,900</span> in Nigeria (~92%)</span></div>
+      </div>
+      <div class="card reveal" data-d="1">
+        <h3>Top 3 user locations</h3>
+        <div class="sub">Share of the three-city user base</div>
+        <div class="stack" id="cityStack" role="img" aria-label="Lagos 45%, Kano 34%, Abuja 21%"></div>
+        <div class="stack-key" id="cityKey"></div>
+        <p class="cap" style="margin-top:14px;font-size:13px;color:var(--ink-2)">Kano now rivals Lagos — a direct result of the Gilda Grace outlet and the Arewa24 marketing push.</p>
+      </div>
+    </div>
+
+    <div class="grid two" style="margin-top:18px">
+      <div class="card reveal">
+        <h3>Nigerian users by state</h3>
+        <div class="sub">Indicative share · ranking from the report, bar lengths approximate</div>
+        <div class="chart" id="ngChart"></div>
+        <details class="data"><summary>Show data table</summary><div class="tbl-wrap">
+          <table><thead><tr><th>State / city</th><th>Indicative share</th></tr></thead><tbody id="ngTable"></tbody></table>
+        </div></details>
+      </div>
+      <div class="card map-card reveal" data-d="1">
+        <h3>Global reach</h3>
+        <div class="sub"><span data-metric="countries">19</span> countries with active users · <span data-metric="currencies">12</span> currencies supported</div>
+        <div class="map-box" id="mapBox"><canvas id="mapCanvas"></canvas></div>
+        <div class="map-stat">
+          <div><span class="n" data-metric="countries">19</span><span class="l">Countries</span></div>
+          <div><span class="n" data-metric="currencies">12</span><span class="l">Currencies</span></div>
+          <div><span class="n">4</span><span class="l">Continents</span></div>
+        </div>
+        <div class="chips" id="countryChips" style="margin-top:16px"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TRADING ============ -->
+  <section id="trading">
+    <div class="sec-head reveal">
+      <div><span class="eyebrow">02 — Trading</span><h2>Gold &amp; <em>silver</em> moved</h2></div>
+      <p class="lead">Value transacted across the app and the retail desk, split by metal. App volumes are still small next to the wholesale retail flow — but growing fastest.</p>
+    </div>
+
+    <div class="grid three">
+      <div class="card statcard reveal">
+        <div class="k-label">Total gold &amp; silver sold <span class="tag-proj">Projected</span></div>
+        <div class="bigstat"><span data-metric="totalValue">₦4.0B</span></div>
+        <p class="cap">Combined value across app and retail since launch.</p>
+      </div>
+      <div class="card statcard reveal" data-d="1">
+        <div class="k-label">App transactions <span class="tag-proj">Projected</span></div>
+        <div class="bigstat"><span data-metric="txns">6,312</span></div>
+        <p class="cap">Deposits and withdrawals settled in-app.</p>
+      </div>
+      <div class="card statcard reveal" data-d="2">
+        <div class="k-label">SANU2SANU transfers <span class="tag-proj">Projected</span></div>
+        <div class="bigstat"><span data-metric="s2s">1,207</span></div>
+        <p class="cap">Instant peer-to-peer gold &amp; silver sends between users.</p>
+      </div>
+    </div>
+
+    <div class="grid two" style="margin-top:18px">
+      <div class="card reveal">
+        <h3>Value sold via the app</h3>
+        <div class="sub">US dollars, cumulative since launch</div>
+        <div class="donut-wrap"><div id="valDonut"></div>
+          <div style="flex:1;min-width:180px"><div class="chart" id="valChart"></div>
+          <div class="legend"><span><span class="sw gold"></span>Gold</span><span><span class="sw silver"></span>Silver</span><span><span class="sw hatch"></span>Projected</span></div></div>
+        </div>
+      </div>
+      <div class="card reveal" data-d="1">
+        <h3>Metal weight moved</h3>
+        <div class="sub">Kilograms sold since launch — each row scaled to its own channel</div>
+        <div class="subgroup">Via the app</div>
+        <div class="chart" id="wtApp"></div>
+        <div class="subgroup">Via the retail desk</div>
+        <div class="chart" id="wtRetail"></div>
+        <div class="legend"><span><span class="sw gold"></span>Gold</span><span><span class="sw silver"></span>Silver</span><span><span class="sw hatch"></span>Projected ’26</span></div>
+        <details class="data"><summary>Show data table</summary><div class="tbl-wrap">
+          <table><thead><tr><th>Channel</th><th>Actual ’25</th><th>Projected ’26</th></tr></thead><tbody id="wtTable"></tbody></table>
+        </div></details>
+      </div>
+    </div>
+
+    <div class="grid two" style="margin-top:18px">
+      <div class="card reveal">
+        <h3>Most-bought gold products</h3><div class="sub">By number of purchases on the app</div>
+        <ul class="ranked" id="goldProducts"></ul>
+      </div>
+      <div class="card reveal" data-d="1">
+        <h3>Most-bought silver products</h3><div class="sub">By number of purchases on the app</div>
+        <ul class="ranked" id="silverProducts"></ul>
+      </div>
+    </div>
+
+    <div class="card reveal" style="margin-top:18px">
+      <h3>On the app</h3>
+      <div class="sub">A sample of the LBMA-referenced products traded on SANU</div>
+      <div class="medallions">
+        <div class="medallion"><img src="assets/img/coin-gold-britannia.webp" alt="Gold Britannia 1oz coin, The Royal Mint" loading="lazy">
+          <span class="cap"><b>Britannia</b>Gold · 1 oz</span></div>
+        <div class="medallion"><img src="assets/img/coin-silver-maple.webp" alt="Silver Maple Leaf 1oz coin, Royal Canadian Mint" loading="lazy">
+          <span class="cap"><b>Maple Leaf</b>Silver · 1 oz</span></div>
+        <div class="medallion"><img src="assets/img/coin-silver-krugerrand.webp" alt="Silver Krugerrand 1oz coin" loading="lazy">
+          <span class="cap"><b>Krugerrand</b>Silver · 1 oz</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ OPERATIONS ============ -->
+  <section id="operations">
+    <div class="sec-head reveal">
+      <div><span class="eyebrow">03 — Operations</span><h2>Vaulting, <em>pickups</em> &amp; the app</h2></div>
+      <p class="lead">Physical fulfilment is live in three cities, backed by the Kian Smith vault. The app shipped fast — a third of all releases in the last six months of the period.</p>
+    </div>
+
+    <div class="grid two">
+      <div class="card reveal">
+        <h3>Product pickups by city</h3>
+        <div class="sub">Cumulative collections at SANU &amp; partner-bank counters</div>
+        <div class="chart" id="pickChart"></div>
+        <p class="cap" style="margin-top:12px;font-size:13px;color:var(--ink-2)"><span data-metric="pickTotal">256</span> total pickups — customers can now collect physical gold &amp; silver, not just hold it digitally.</p>
+      </div>
+      <div class="grid" style="gap:18px;align-content:start">
+        <div class="card statcard reveal" data-d="1">
+          <div style="display:flex;gap:16px;align-items:center">
+            <svg class="ill" style="width:56px;flex-shrink:0" viewBox="0 0 60 60" aria-hidden="true">
+              <circle class="draw" cx="30" cy="30" r="22"/><circle class="draw" cx="30" cy="30" r="12"/>
+              <path class="draw" d="M30 8v6M30 46v6M8 30h6M46 30h6"/>
+            </svg>
+            <div>
+              <div class="k-label">Clients vaulting with Kian Smith <span class="tag-proj">Projected</span></div>
+              <div class="bigstat" style="font-size:2.6rem"><span data-metric="vault">15</span></div>
+            </div>
+          </div>
+          <p class="cap">Holding allocated precious-metal products in the Kian Smith vault.</p>
+        </div>
+        <div class="card statcard reveal" data-d="2">
+          <div class="k-label">App downloads <span class="tag-proj">Projected</span></div>
+          <div class="bigstat" style="font-size:2.6rem"><span data-metric="downloads">8,195</span></div>
+          <p class="cap"><span data-metric="releases">25</span> version releases across iOS &amp; Android — <span data-metric="releasesRecent">8</span> in the six months to July 2025.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card reveal" style="margin-top:18px">
+      <h3>Cumulative value trajectory</h3>
+      <div class="sub">Indexed to July 2025 = 100 · the dashed segment is the 2026 projection</div>
+      <div id="spark"></div>
+    </div>
+  </section>
+
+  <!-- ============ PRODUCT ============ -->
+  <section id="product">
+    <div class="sec-head reveal">
+      <div><span class="eyebrow">04 — Product</span><h2>What <em>shipped</em></h2></div>
+      <p class="lead">The period’s headline features — verification, payments reach, peer transfers and the return of a flagship physical product.</p>
+    </div>
+
+    <div class="grid features">
+      <div class="card feat reveal">
+        <h4><svg class="m" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> KYC verification</h4>
+        <p>National (NIN) and international document verification, built into the app. Required to buy and to send SANU.</p>
+      </div>
+      <div class="card feat reveal" data-d="1">
+        <h4><svg class="m" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg> Global payments</h4>
+        <p>Most world currencies and international credit cards now accepted, with an optional <span data-metric="currencies">12</span>-currency dashboard view.</p>
+      </div>
+      <div class="card feat reveal" data-d="2">
+        <h4><svg class="m" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 7 4-4 4 4M7 3v14M21 17l-4 4-4-4M17 21V7"/></svg> SANU2SANU</h4>
+        <div class="big"><span data-metric="s2s">1,207</span></div>
+        <p>Instant transfers between users — send gold or silver to anyone by email or phone.</p>
+      </div>
+      <div class="card feat reveal">
+        <h4><svg class="m" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5ZM2 17l10 5 10-5M2 12l10 5 10-5"/></svg> Gold Cubes are back</h4>
+        <p>Collectible cast cubes returned in <span data-cube>1 g · 2 g · 5 g · 10 g</span>, in a range of designs.</p>
+      </div>
+      <div class="card feat reveal" data-d="1">
+        <h4><svg class="m" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 18v3M16 18v3"/></svg> Redesigned site &amp; comms</h4>
+        <p>New sanucoin.com plus integrated customer communications — transactional mailers and SMS.</p>
+      </div>
+      <div class="card feat reveal" data-d="2" style="display:flex;gap:16px;align-items:center">
+        <img src="assets/img/cubes-gold.webp" alt="Gold cubes in 1–10g sizes" loading="lazy" style="width:96px;border-radius:10px;flex-shrink:0">
+        <div>
+          <h4 style="margin-bottom:4px">LBMA-grade only</h4>
+          <p>Every product is 99.9%+ pure and assay-certified — Britannia, Valcambi, Argor-Heraeus, Maple Leaf and more.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GROWTH ============ -->
+  <section id="growth">
+    <div class="sec-head reveal">
+      <div><span class="eyebrow">05 — Growth</span><h2>Retail &amp; <em>marketing</em></h2></div>
+      <p class="lead">Two physical outlets and a Northern-Nigeria media push that reached tens of thousands of viewers.</p>
+    </div>
+
+    <div class="grid two">
+      <div class="card reveal">
+        <h3>Physical outlets</h3><div class="sub">Owned &amp; partner storefronts</div>
+        <ul class="ranked" id="outlets"></ul>
+        <div class="prodshot" style="margin-top:14px"><img src="assets/img/store-vi.webp" alt="SANU Store, Victoria Island, Lagos" loading="lazy"></div>
+      </div>
+      <div class="card statcard reveal" data-d="1">
+        <div class="k-label">“Legacy of Traditions” on YouTube <span class="tag-proj">Projected</span></div>
+        <div class="bigstat"><span data-metric="yt">19,000</span><span class="u">views</span></div>
+        <p class="cap">SANU powered <b>Battle of the Northern Kitchen</b> on Arewa24 as a soft marketing launch, extended through the Legacy of Traditions series.</p>
+      </div>
+    </div>
+
+    <div class="note reveal" id="methodNote"></div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="fgrid">
+    <div>
+      <h4>SANU — Gold to the People</h4>
+      <p>A Kian Smith company. The better way to buy 99.9% gold &amp; silver.</p>
+      <p style="margin-top:6px">Continue the conversation — <a href="mailto:support@sanucoin.com">support@sanucoin.com</a> · <a href="https://sanucoin.com">sanucoin.com</a></p>
+      <p style="margin-top:10px"><a href="admin.html">Update the report data →</a></p>
+    </div>
+    <div style="max-width:46ch">
+      <h4 style="font-size:.95rem">Sources</h4>
+      <p class="src-note">Actual figures: SANU Report, July 2022 – July 2025. Nigerian-state shares and city splits are indicative, read off the report’s charts. Projected figures are estimates prepared for this dashboard and editable via the data form.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="data-src" id="dataSrc">Default figures</div>
+<div id="tip" role="status"></div>
+
+<script src="assets/js/skin.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/worldmap.js"></script>
+<script src="assets/js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+/* ============================================================================
+   SANU REPORT — "Editorial" skin
+   A poster-campaign treatment (grain, sculptural gradient forms, oversized
+   serif/grotesque headlines, hairline-ruled blocks) in the SANU palette.
+   Everything here is scoped to :root[data-skin="editorial"].
+   ========================================================================== */
+
+:root[data-skin="editorial"]{
+  --bg:#EFE6D6; --surface:#EFE6D6; --surface-2:#E4D6BF; --surface-3:#DAC9AC;
+  --border:#CDBB9C; --border-strong:#B49B72;
+  --ink:#241016; --ink-2:#5E4038; --muted:#8A6E5E;
+  --display:#4A1620;
+  --radius:0px;
+}
+@media (prefers-color-scheme:dark){
+  :root[data-skin="editorial"]:not([data-theme="light"]){
+    --bg:#160C0E; --surface:#160C0E; --surface-2:#221414; --surface-3:#301C1D;
+    --border:#3C282A; --border-strong:#5A3E40;
+    --ink:#F3E7D6; --ink-2:#C9B09F; --muted:#9C8171;
+    --display:#F1DCC0;
+  }
+}
+:root[data-skin="editorial"][data-theme="dark"]{
+  --bg:#160C0E; --surface:#160C0E; --surface-2:#221414; --surface-3:#301C1D;
+  --border:#3C282A; --border-strong:#5A3E40;
+  --ink:#F3E7D6; --ink-2:#C9B09F; --muted:#9C8171;
+  --display:#F1DCC0;
+}
+
+/* ---- textured-paper grain, painted BEHIND the content ---- */
+:root[data-skin="editorial"] body{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.35 0 0 0 0 0.22 0 0 0 0 0.14 0.9 0 0 0 0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.14'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat:repeat;
+}
+:root[data-skin="editorial"] main,
+:root[data-skin="editorial"] header,
+:root[data-skin="editorial"] footer{position:relative;z-index:1}
+
+:root[data-skin="editorial"] body{font-family:Manrope,-apple-system,sans-serif}
+
+/* ---- header : strip it back ---- */
+:root[data-skin="editorial"] header{background:transparent;backdrop-filter:none;border-bottom:1px solid var(--border)}
+:root[data-skin="editorial"] nav.secs a{font-weight:600;letter-spacing:.09em;text-transform:uppercase;font-size:11px}
+:root[data-skin="editorial"] .seg,:root[data-skin="editorial"] .skin-btn,:root[data-skin="editorial"] .icon-btn{border-radius:0;background:transparent}
+:root[data-skin="editorial"] .seg{border-color:var(--ink)}
+:root[data-skin="editorial"] .seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+
+/* ---- typography : oversized, serif accents ---- */
+:root[data-skin="editorial"] h1,
+:root[data-skin="editorial"] h2{font-family:Cabin,sans-serif;font-weight:700;letter-spacing:-.02em;line-height:.98}
+:root[data-skin="editorial"] .sec-head h2 em,
+:root[data-skin="editorial"] .hero h1 em{
+  font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:600;letter-spacing:0;
+}
+:root[data-skin="editorial"] .eyebrow{font-size:11px;letter-spacing:.28em}
+
+/* ---- section header becomes a poster-style intro ---- */
+:root[data-skin="editorial"] section{padding-top:130px}
+:root[data-skin="editorial"] .sec-head{
+  position:relative;flex-direction:column;align-items:flex-start;
+  gap:20px;padding:56px 0 30px;margin-bottom:44px;border-bottom:1px solid var(--border);
+  min-height:340px;justify-content:flex-end
+}
+:root[data-skin="editorial"] .sec-head > div{max-width:none;position:relative;z-index:1}
+:root[data-skin="editorial"] .sec-head .eyebrow{position:absolute;top:22px;left:0;z-index:1}
+:root[data-skin="editorial"] .sec-head h2{font-size:clamp(2.4rem,6.5vw,4.6rem);max-width:15ch}
+:root[data-skin="editorial"] .sec-head .lead{
+  font-size:15.5px;max-width:46ch;color:var(--ink-2);order:3;position:relative;z-index:1;
+  border-left:2px solid var(--display);padding-left:16px
+}
+
+/* sculptural gradient forms, one per section, cycling */
+:root[data-skin="editorial"] .sec-head::after{
+  content:"";position:absolute;right:0;top:50%;transform:translateY(-50%);
+  width:min(34vw,300px);height:min(34vw,300px);pointer-events:none;z-index:0;opacity:1;
+  filter:drop-shadow(0 30px 70px rgba(74,22,32,.4));
+}
+:root[data-skin="editorial"] section:nth-of-type(3n+1) .sec-head::after{ /* disc */
+  border-radius:50%;
+  background:conic-gradient(from -50deg,#2c0d14,var(--gold) 100deg,#F4E9D2 180deg,var(--wine-bar) 280deg,#2c0d14);
+}
+:root[data-skin="editorial"] section:nth-of-type(3n+2) .sec-head::after{ /* beam wedge */
+  clip-path:polygon(0 4%,100% 40%,78% 100%,0 70%);
+  background:linear-gradient(118deg,#F4E9D2 0,var(--gold) 42%,#5a1a24 78%,#2c0d14 100%);
+}
+:root[data-skin="editorial"] section:nth-of-type(3n) .sec-head::after{ /* chevron — echoes the KS mark */
+  clip-path:polygon(0 14%,50% 40%,0 66%,30% 84%,100% 40%,30% 0);
+  background:linear-gradient(140deg,#C4241C,#7a121a 50%,#2c0d14);
+}
+@media (max-width:900px){
+  :root[data-skin="editorial"] section{padding-top:84px}
+  :root[data-skin="editorial"] .sec-head{min-height:0;padding-top:58px;margin-bottom:32px}
+  :root[data-skin="editorial"] .sec-head::after{position:relative;top:auto;right:auto;transform:none;width:150px;height:150px;order:-1}
+  :root[data-skin="editorial"] .sec-head .eyebrow{position:static}
+}
+
+/* ---- hero ---- */
+:root[data-skin="editorial"] .hero{padding-top:70px}
+:root[data-skin="editorial"] .hero .kicker{font-size:1.1rem;letter-spacing:.02em;color:var(--muted)}
+:root[data-skin="editorial"] .hero h1{font-size:clamp(3rem,11vw,7rem);max-width:12ch}
+:root[data-skin="editorial"] .hero-coin{
+  width:min(30vw,320px);opacity:1;mix-blend-mode:normal;
+  filter:drop-shadow(0 30px 70px rgba(74,22,32,.4)) grayscale(.1) contrast(1.05)
+}
+:root[data-skin="editorial"] .hero .period{border-radius:0;border-color:var(--ink);background:transparent;text-transform:uppercase;letter-spacing:.1em;font-size:12px}
+
+/* ---- cards flatten to editorial blocks ---- */
+:root[data-skin="editorial"] .card{
+  background:transparent;border:0;border-top:1px solid var(--ink);border-radius:0;padding:26px 0 8px
+}
+:root[data-skin="editorial"] .card h3{font-family:Cabin;font-weight:700;font-size:1.2rem}
+:root[data-skin="editorial"] .card .sub{text-transform:uppercase;letter-spacing:.1em;font-size:10.5px}
+:root[data-skin="editorial"] .grid{gap:30px 26px}
+:root[data-skin="editorial"] .note{background:transparent;border:0;border-top:2px solid var(--gold);border-radius:0;padding:16px 0 0}
+
+/* ---- KPI strip → hairline ledger ---- */
+:root[data-skin="editorial"] .kpis{border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);gap:0;margin-top:44px}
+:root[data-skin="editorial"] .kpi{background:transparent;border:0;border-left:1px solid var(--border);border-radius:0;padding:20px 16px;animation:none}
+:root[data-skin="editorial"] .kpi:first-child{border-left:0}
+:root[data-skin="editorial"] .kpi::after{display:none}
+:root[data-skin="editorial"] .kpi .k-label{font-size:10px;letter-spacing:.12em}
+:root[data-skin="editorial"] .kpi .k-val{font-family:Cabin;font-weight:700;font-size:clamp(1.7rem,3vw,2.4rem)}
+@media (max-width:1080px){:root[data-skin="editorial"] .kpi:nth-child(3n+1){border-left:0}}
+@media (max-width:560px){:root[data-skin="editorial"] .kpi:nth-child(odd){border-left:0}}
+
+/* ---- big stats ---- */
+:root[data-skin="editorial"] .bigstat{font-family:Cabin;font-weight:700;font-size:clamp(3rem,8vw,4.6rem)}
+:root[data-skin="editorial"] .k-label{letter-spacing:.12em}
+
+/* ---- chips / ranked / map ---- */
+:root[data-skin="editorial"] .chip{border-radius:0;background:transparent;border-color:var(--border-strong);text-transform:uppercase;letter-spacing:.06em;font-size:11px}
+:root[data-skin="editorial"] .chip.hi{background:var(--display);color:var(--bg);border-color:var(--display)}
+:root[data-skin="editorial"] .track,:root[data-skin="editorial"] .stack,:root[data-skin="editorial"] .prodshot,
+:root[data-skin="editorial"] .medallion img{border-radius:0}
+:root[data-skin="editorial"] .fill{border-radius:0}
+:root[data-skin="editorial"] .ranked .rk{font-size:1.5rem}
+:root[data-skin="editorial"] .map-stat .n{font-family:Cabin;font-size:1.9rem}
+
+/* ---- footer ---- */
+:root[data-skin="editorial"] footer{border-top:1px solid var(--ink)}
+:root[data-skin="editorial"] .data-src{border-radius:0}

@@ -10,18 +10,31 @@ from a form without a redeploy.
 ## Structure
 
 ```
-index.html              the dashboard
-admin.html              the data-entry form  (/admin.html)
-assets/css/styles.css   all styling, light + dark themes
-assets/js/data.js       DEFAULT dataset  (fallback + schema)
-assets/js/util.js       formatting, count-up, data loader
-assets/js/worldmap.js   dot-matrix world map + country coordinates
-assets/js/dashboard.js  dashboard logic
-assets/js/admin.js      the form
-assets/img/             product photos (from the July 2025 report) + favicons
+index.html               cover page — logo, headline, "Enter the report", style picker
+report.html              the dashboard
+admin.html               the data-entry form  (/admin.html)
+assets/css/styles.css    base styling, light + dark themes
+assets/css/editorial.css the "Editorial" design skin (poster treatment)
+assets/js/skin.js        design-skin switcher (classic ⇄ editorial), shared
+assets/js/data.js        DEFAULT dataset  (fallback + schema)
+assets/js/util.js        formatting, count-up, data loader
+assets/js/worldmap.js    dot-matrix world map + country coordinates
+assets/js/dashboard.js   dashboard logic
+assets/js/admin.js       the form
+assets/img/              product photos (from the July 2025 report), the SANU logo, favicons
 netlify/functions/data.mjs   GET/POST the editable dataset (Netlify Blobs)
-netlify.toml            build + routing config
+netlify.toml             build + routing config
 ```
+
+## Two design styles
+
+The report ships with two interchangeable looks, chosen on the cover page or from
+the header (**Classic** / **Editorial**). The choice is remembered per browser.
+
+- **Classic** — the clean card-based dashboard.
+- **Editorial** — a poster-campaign treatment: paper grain, oversized headlines
+  with serif accents, hairline-ruled blocks and sculptural gradient forms, in the
+  same SANU palette.
 
 ## Editing the numbers
 
@@ -53,8 +66,8 @@ npm install
 npm run dev        # netlify dev — serves the site + the function + Blobs
 ```
 
-Opening `index.html` directly (file://) also works — it just falls back to the
-default dataset because `/api/data` isn't available.
+Opening the files directly (file://) also works — the dashboard just falls back
+to the default dataset because `/api/data` isn't available.
 
 ## Data caveats
 

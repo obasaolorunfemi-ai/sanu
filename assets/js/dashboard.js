@@ -309,7 +309,16 @@
       const next = cur === "dark" ? "light" : "dark";
       document.documentElement.dataset.theme = next;
       safeSet("sanu-theme", next);
-      render(false);
+      render(null);
+    });
+
+    const skinBtn = $("#skin"), skinLink = $("#drawerSkin");
+    if (skinBtn) skinBtn.addEventListener("click", () => window.SANUSkin.toggle());
+    if (skinLink) skinLink.addEventListener("click", e => { e.preventDefault(); window.SANUSkin.toggle(); });
+    let st;
+    document.addEventListener("skinchange", () => {
+      clearTimeout(st);
+      st = setTimeout(() => { render(null); renderMap(); }, 60);
     });
   }
 
@@ -338,7 +347,8 @@
   }
 
   function wireSpy() {
-    const links = $$("nav.secs a, #drawer a[href^='#']");
+    const links = $$("nav.secs a, #drawer a[href^='#']")
+      .filter(l => /^#\w/.test(l.getAttribute("href")));
     const ids = [...new Set(links.map(l => l.getAttribute("href")))];
     const io = new IntersectionObserver(ents => {
       ents.forEach(e => {
