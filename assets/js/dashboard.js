@@ -340,7 +340,15 @@
   function wireReveal() {
     const io = new IntersectionObserver(ents => {
       ents.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add("in"); kickCharts(e.target); io.unobserve(e.target); }
+        if (e.isIntersecting) {
+          const el = e.target;
+          el.classList.add("in");
+          kickCharts(el);
+          io.unobserve(el);
+          // safety net: guarantee the element ends visible even if the
+          // CSS animation is interrupted by a later re-render
+          setTimeout(() => { el.style.opacity = "1"; el.style.transform = "none"; }, 900);
+        }
       });
     }, { rootMargin: "0px 0px -8% 0px", threshold: 0.05 });
     $$(".reveal").forEach(el => io.observe(el));
