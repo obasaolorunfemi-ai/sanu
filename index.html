@@ -9,83 +9,111 @@
 <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32">
 <link rel="icon" href="assets/img/favicon-512.png" sizes="512x512">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-<script>try{var s=localStorage.getItem('sanu-skin');if(s)document.documentElement.dataset.skin=s;}catch(e){}</script>
+<script>try{var s=localStorage.getItem('sanu-skin');if(s)document.documentElement.dataset.skin=s;var t=localStorage.getItem('sanu-theme');if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cabin:wght@500;600;700&family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Manrope:wght@400;500;600;700&display=swap">
 <style>
   *,*::before,*::after{box-sizing:border-box}
   :root{
-    --wine:#4A1620; --wine-deep:#1c0d10; --cream:#F1E4CE; --cream-dim:#C9B49A;
-    --gold:#C8952E; --crimson:#C4241C;
+    --ground:#1c0d10; --panel:#26121580;
+    --ink:#F1E4CE; --ink-dim:#C9B49A; --line:rgba(241,228,206,.28);
+    --gold:#C8952E; --btn-bg:#F1E4CE; --btn-ink:#1c0d10;
+    --glow-a:rgba(200,149,46,.20); --glow-b:rgba(196,36,28,.16);
+    --grain:.16;
   }
-  html,body{height:100%}
+  :root[data-theme="light"]{
+    --ground:#F1E7D8; --ink:#3A1119; --ink-dim:#7A5A46; --line:rgba(58,17,25,.22);
+    --gold:#9A6A1E; --btn-bg:#3A1119; --btn-ink:#F1E7D8;
+    --glow-a:rgba(154,106,30,.16); --glow-b:rgba(160,40,30,.10);
+  }
+  :root[data-skin="classic"]{ --grain:.05; }
+
+  html,body{min-height:100%}
   body{
-    margin:0;background:var(--wine-deep);color:var(--cream);
-    font-family:Manrope,-apple-system,BlinkMacSystemFont,sans-serif;overflow:hidden;
+    margin:0;background:var(--ground);color:var(--ink);
+    font-family:Manrope,-apple-system,BlinkMacSystemFont,sans-serif;
   }
   @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 
   .stage{
-    position:relative;min-height:100%;height:100dvh;display:flex;flex-direction:column;
+    position:relative;min-height:100dvh;display:flex;flex-direction:column;
     padding:clamp(20px,4vw,48px);
     background:
-      radial-gradient(120% 80% at 82% 30%, rgba(200,149,46,.20), transparent 55%),
-      radial-gradient(90% 90% at 8% 100%, rgba(196,36,28,.16), transparent 60%),
-      var(--wine-deep);
+      radial-gradient(120% 80% at 82% 30%, var(--glow-a), transparent 55%),
+      radial-gradient(90% 90% at 8% 100%, var(--glow-b), transparent 60%),
+      var(--ground);
   }
-  .stage::after{ /* grain */
-    content:"";position:absolute;inset:0;pointer-events:none;opacity:.16;mix-blend-mode:overlay;
+  .stage::after{
+    content:"";position:absolute;inset:0;pointer-events:none;opacity:var(--grain);mix-blend-mode:overlay;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
   .stage > *{position:relative;z-index:1}
 
   .top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
-  .top img{height:38px;width:auto}
-  .top .meta{font-family:Cabin;font-weight:600;font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--cream-dim);text-align:right;line-height:1.7}
+  .top .brand img{height:40px;width:auto;display:block}
+  .top .brand .l-dark{display:none}
+  :root[data-theme="light"] .top .brand .l-cream{display:none}
+  :root[data-theme="light"] .top .brand .l-dark{display:block}
+  .top .right{display:flex;align-items:flex-start;gap:16px}
+  .top .meta{font-family:Cabin;font-weight:600;font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--ink-dim);text-align:right;line-height:1.7}
+  .theme-btn{
+    width:38px;height:38px;flex-shrink:0;display:grid;place-items:center;cursor:pointer;
+    border:1px solid var(--line);background:transparent;color:var(--ink-dim);border-radius:0;transition:color .2s
+  }
+  .theme-btn:hover{color:var(--ink)}
+  .theme-btn svg{width:18px;height:18px}
+  .theme-btn .moon{display:none}
+  :root[data-theme="light"] .theme-btn .sun{display:none}
+  :root[data-theme="light"] .theme-btn .moon{display:block}
 
-  .mid{flex:1;display:flex;align-items:center;justify-content:space-between;gap:40px;min-height:0}
+  .mid{flex:1;display:flex;align-items:center;justify-content:space-between;gap:40px;min-height:0;padding:40px 0}
   .headline{max-width:60ch;animation:rise .9s cubic-bezier(.22,1,.36,1) both}
-  .headline .kicker{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-size:clamp(1.3rem,3vw,1.9rem);color:var(--cream-dim);margin-bottom:6px}
+  .headline .kicker{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-size:clamp(1.3rem,3vw,1.9rem);color:var(--ink-dim);margin-bottom:6px}
   .headline h1{
     font-family:Cabin,sans-serif;font-weight:700;letter-spacing:-.02em;line-height:.94;
-    font-size:clamp(3rem,12vw,8rem);margin:0;color:var(--cream)
+    font-size:clamp(2.8rem,11vw,7.5rem);margin:0;color:var(--ink)
   }
-  .headline h1 em{font-family:"Cormorant Garamond",serif;font-style:italic;font-weight:600}
+  :root[data-skin="editorial"] .headline h1 em{font-family:"Cormorant Garamond",serif;font-style:italic;font-weight:600}
+  :root[data-skin="classic"] .headline h1 em{font-style:normal}
   .headline .period{
     margin-top:26px;display:inline-flex;align-items:center;gap:12px;font-family:Cabin;font-weight:600;
-    font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--cream-dim);
-    border:1px solid rgba(241,228,206,.3);padding:9px 18px
+    font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-dim);
+    border:1px solid var(--line);padding:9px 18px
   }
+  :root[data-skin="classic"] .headline .period{border-radius:999px}
   .headline .period .dot{width:7px;height:7px;border-radius:50%;background:var(--gold)}
 
   .coin{
-    width:clamp(200px,34vw,440px);flex-shrink:0;
-    filter:drop-shadow(0 40px 90px rgba(0,0,0,.6));
-    animation:rise 1s cubic-bezier(.22,1,.36,1) .15s both, spin 40s linear infinite;
+    width:clamp(200px,32vw,420px);flex-shrink:0;
+    filter:drop-shadow(0 40px 90px rgba(0,0,0,.55));
+    animation:rise 1s cubic-bezier(.22,1,.36,1) .15s both, spin 44s linear infinite;
   }
-  @media (max-width:820px){ .coin{position:absolute;right:-14%;top:8%;width:70vw;opacity:.32;animation:spin 40s linear infinite} .mid{justify-content:flex-start} }
+  @media (max-width:820px){ .coin{position:absolute;right:-16%;top:6%;width:74vw;opacity:.26;animation:spin 44s linear infinite} .mid{justify-content:flex-start} }
   @keyframes spin{to{transform:rotate(360deg)}}
   @keyframes rise{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
 
   .bottom{display:flex;justify-content:space-between;align-items:flex-end;gap:28px;flex-wrap:wrap;animation:rise .9s cubic-bezier(.22,1,.36,1) .3s both}
   .enter{
     display:inline-flex;align-items:center;gap:14px;font-family:Cabin;font-weight:700;
-    font-size:clamp(1rem,2vw,1.25rem);letter-spacing:.02em;color:var(--wine-deep);background:var(--cream);
-    border:0;padding:18px 30px;cursor:pointer;text-decoration:none;transition:transform .25s,background .25s
+    font-size:clamp(1rem,2vw,1.2rem);letter-spacing:.02em;color:var(--btn-ink);background:var(--btn-bg);
+    border:0;padding:17px 28px;cursor:pointer;text-decoration:none;transition:transform .25s,opacity .25s
   }
-  .enter:hover{transform:translateX(4px);background:#fff}
+  :root[data-skin="classic"] .enter{border-radius:999px}
+  .enter:hover{transform:translateX(4px);opacity:.9}
   .enter svg{width:22px;height:22px}
 
-  .picker{display:flex;flex-direction:column;gap:8px}
-  .picker .lbl{font-family:Cabin;font-weight:600;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--cream-dim)}
+  .picker{display:flex;flex-direction:column;gap:9px}
+  .picker .lbl{font-family:Cabin;font-weight:600;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-dim)}
   .picker .opts{display:flex;gap:8px}
   .picker button{
-    font-family:Cabin;font-weight:600;font-size:12.5px;letter-spacing:.03em;color:var(--cream-dim);
-    background:transparent;border:1px solid rgba(241,228,206,.28);padding:9px 16px;cursor:pointer;transition:all .2s
+    font-family:Cabin;font-weight:600;font-size:12.5px;letter-spacing:.03em;color:var(--ink-dim);
+    background:transparent;border:1px solid var(--line);padding:9px 16px;cursor:pointer;transition:all .2s
   }
-  .picker button[aria-pressed="true"]{color:var(--wine-deep);background:var(--gold);border-color:var(--gold)}
-  .picker button:hover:not([aria-pressed="true"]){color:var(--cream);border-color:var(--cream)}
+  :root[data-skin="classic"] .picker button{border-radius:999px}
+  .picker button[aria-pressed="true"]{color:var(--btn-ink);background:var(--gold);border-color:var(--gold)}
+  .picker button:hover:not([aria-pressed="true"]){color:var(--ink);border-color:var(--ink)}
+  .picker .hint{font-family:Manrope;font-size:11px;color:var(--ink-dim);opacity:.8;margin-top:2px}
 
   :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 </style>
@@ -93,8 +121,17 @@
 <body>
   <div class="stage">
     <div class="top">
-      <img src="assets/img/logo-light.png" alt="Kian Smith SANU">
-      <div class="meta">Annual Report<br>Gold &amp; Silver</div>
+      <span class="brand">
+        <img class="l-cream" src="assets/img/logo-light.png" alt="Kian Smith SANU">
+        <img class="l-dark" src="assets/img/logo-dark.png" alt="Kian Smith SANU">
+      </span>
+      <div class="right">
+        <div class="meta">Annual Report<br>Gold &amp; Silver</div>
+        <button class="theme-btn" id="theme" aria-label="Toggle light or dark theme">
+          <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5 5 3.5 3.5M20.5 20.5 19 19M19 5l1.5-1.5M3.5 20.5 5 19"/></svg>
+          <svg class="moon" viewBox="0 0 24 24" fill="currentColor"><path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z"/></svg>
+        </button>
+      </div>
     </div>
 
     <div class="mid">
@@ -117,22 +154,38 @@
           <button id="pClassic" aria-pressed="true">Classic</button>
           <button id="pEditorial" aria-pressed="false">Editorial</button>
         </div>
+        <span class="hint" id="pickerHint">Clean, card-based dashboard</span>
       </div>
     </div>
   </div>
 
-  <script src="assets/js/skin.js"></script>
+  <script src="assets/js/skin.js?v=3"></script>
   <script>
     (function () {
-      var c = document.getElementById("pClassic"), e = document.getElementById("pEditorial");
+      var c = document.getElementById("pClassic"),
+          e = document.getElementById("pEditorial"),
+          hint = document.getElementById("pickerHint"),
+          tb = document.getElementById("theme");
+
       function paint() {
         var s = window.SANUSkin.get();
         c.setAttribute("aria-pressed", s !== "editorial");
         e.setAttribute("aria-pressed", s === "editorial");
+        hint.textContent = s === "editorial"
+          ? "Poster treatment — grain, oversized type, sculptural forms"
+          : "Clean, card-based dashboard";
       }
       c.addEventListener("click", function () { window.SANUSkin.set("classic"); paint(); });
       e.addEventListener("click", function () { window.SANUSkin.set("editorial"); paint(); });
       paint();
+
+      tb.addEventListener("click", function () {
+        var cur = document.documentElement.dataset.theme ||
+          (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        var next = cur === "dark" ? "light" : "dark";
+        document.documentElement.dataset.theme = next;
+        try { localStorage.setItem("sanu-theme", next); } catch (err) {}
+      });
     })();
   </script>
 </body>

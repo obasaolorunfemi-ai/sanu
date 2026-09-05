@@ -1,15 +1,17 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-skin="classic">
 <head>
 <meta charset="utf-8">
 <title>SANU Report — Data</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32">
+<script>try{var s=localStorage.getItem('sanu-skin');if(s)document.documentElement.dataset.skin=s;var t=localStorage.getItem('sanu-theme');if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@1,600&family=Manrope:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/css/styles.css?v=3">
+<link rel="stylesheet" href="assets/css/editorial.css?v=3">
 <style>
   .wrap{max-width:920px;margin:0 auto;padding:28px 22px 120px}
   .admin-head{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:8px}
@@ -56,7 +58,16 @@
 <div class="wrap">
   <div class="admin-head">
     <h1>Report data</h1>
-    <a href="report.html">← Back to the dashboard</a>
+    <div style="display:flex;align-items:center;gap:10px">
+      <button class="skin-btn" id="skin" aria-label="Switch design style" title="Switch design style">
+        <span class="s-classic">Classic</span><span class="s-editorial">Editorial</span>
+      </button>
+      <button class="icon-btn" id="theme" aria-label="Toggle light or dark theme">
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5 5 3.5 3.5M20.5 20.5 19 19M19 5l1.5-1.5M3.5 20.5 5 19"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="currentColor"><path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z"/></svg>
+      </button>
+      <a href="report.html">← Dashboard</a>
+    </div>
   </div>
   <p class="intro">
     Edit any figure below and press <b>Save</b>. The change is written to the site’s data store and every
@@ -74,8 +85,22 @@
   </div>
 </div>
 
-<script src="assets/js/data.js"></script>
-<script src="assets/js/util.js"></script>
-<script src="assets/js/admin.js"></script>
+<script src="assets/js/skin.js?v=3"></script>
+<script src="assets/js/data.js?v=3"></script>
+<script src="assets/js/util.js?v=3"></script>
+<script src="assets/js/admin.js?v=3"></script>
+<script>
+  (function () {
+    var sb = document.getElementById('skin'), tb = document.getElementById('theme');
+    sb.addEventListener('click', function () { window.SANUSkin.toggle(); });
+    tb.addEventListener('click', function () {
+      var cur = document.documentElement.dataset.theme ||
+        (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      document.documentElement.dataset.theme = next;
+      try { localStorage.setItem('sanu-theme', next); } catch (e) {}
+    });
+  })();
+</script>
 </body>
 </html>
